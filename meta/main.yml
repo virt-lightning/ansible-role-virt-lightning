@@ -1,0 +1,22 @@
+---
+galaxy_info:
+  author: Gonéri Le Bouder
+  description: An Ansible role to install Virt-Lighning
+  license: license (Apache)
+  min_ansible_version: 2.5
+  platforms:
+    - name: Fedora
+      versions:
+        - 29
+    - name: Ubuntu
+      versions:
+        - xenial
+        - bionic
+        - cosmic
+    - name: Debian
+      versions:
+        - buster
+        - stretch
+  galaxy_tags: ['libvirt']
+
+dependencies: []
