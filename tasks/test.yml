@@ -1,6 +1,6 @@
 ---
 - name: Generate a SSH key
-  command : ssh-keygen -q -t rsa -C "" -N "" -f ~/.ssh/id_rsa
+  command: ssh-keygen -q -t rsa -C "" -N "" -f ~/.ssh/id_rsa
   args:
     creates: ~/.ssh/id_rsa
 - name: Start the environment

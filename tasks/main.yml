@@ -11,9 +11,9 @@
   meta: reset_connection
 - name: Prepare for qemu:///system
   import_tasks: prepare_system.yml
-- name: venv 
+- name: venv
   import_tasks: venv.yml
-- name: config 
+- name: config
   import_tasks: config.yml
 - name: prepare an image
   import_tasks: image.yml
