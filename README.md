@@ -18,7 +18,7 @@ Following tasks will be executed by the role:
 
 ## Requirements
 
-None. You need to have root access.
+None.
 
 ## Role variables
 
@@ -50,8 +50,8 @@ None.
 
 ## License
 
-To be defined.
+Apache License 2.0
 
 ## Author Information
 
-This role was created in 2019 by Goneri Le Bouder.
+This role was created in 2019 by Goneri Le Bouder and the virt-lightning team.
