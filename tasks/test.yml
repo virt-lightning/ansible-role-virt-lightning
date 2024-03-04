@@ -22,7 +22,7 @@
   environment:
     PATH: "{{ ansible_env.PATH }}:{{ ansible_env.HOME }}/.local/bin"
 - name: List the VM
-  command: "virsh -c {{ virt_lightning_qemu_uri }} list"
+  command: virsh -c {{ virt_lightning_qemu_uri }} list
   register: list_vm
 - name: Assert the VM is in the list
   assert:
@@ -34,7 +34,7 @@
   environment:
     PATH: "{{ ansible_env.PATH }}:{{ ansible_env.HOME }}/.local/bin"
 - name: List the VM
-  command: "virsh -c {{ virt_lightning_qemu_uri }} list"
+  command: virsh -c {{ virt_lightning_qemu_uri }} list
   register: list_vm
 - name: Assert the VM is not in the list
   assert:
