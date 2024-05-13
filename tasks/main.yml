@@ -1,22 +1,29 @@
 ---
-- name: gather os specific variables
-  include_vars: "{{ item }}"
+- name: Gather os specific variables
   with_first_found:
-    - "{{ ansible_distribution }}-{{ ansible_distribution_version}}.yml"
-    - "{{ ansible_distribution }}-{{ ansible_distribution_major_version}}.yml"
+    - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+    - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
     - "{{ ansible_distribution }}.yml"
-- name: install
-  import_tasks: install.yml
-- name: reset ssh connection to reload the groups
-  meta: reset_connection
+  ansible.builtin.include_vars: "{{ item }}"
+
+- name: Install
+  ansible.builtin.import_tasks: install.yml
+
+- name: Reset ssh connection to reload the groups
+  ansible.builtin.meta: reset_connection
+
 - name: Prepare for qemu:///system
-  import_tasks: prepare_system.yml
-- name: venv
-  import_tasks: venv.yml
-- name: config
-  import_tasks: config.yml
-- name: prepare an image
-  import_tasks: image.yml
-- name: test
-  import_tasks: test.yml
+  ansible.builtin.import_tasks: prepare_system.yml
+
+- name: Venv
+  ansible.builtin.import_tasks: venv.yml
+
+- name: Config
+  ansible.builtin.import_tasks: config.yml
+
+- name: Prepare an image
+  ansible.builtin.import_tasks: image.yml
+
+- name: Test
   when: virt_lightning_run_tests
+  ansible.builtin.import_tasks: test.yml

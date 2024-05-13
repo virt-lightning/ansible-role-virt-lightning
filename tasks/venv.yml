@@ -1,15 +1,17 @@
 ---
 - name: Push the working directory
-  synchronize:
+  when: dev_mode is defined
+  ansible.posix.synchronize:
     src: ../../virt-lightning
     dest: ~/
-  when: dev_mode is defined
+
 - name: Fetch virt-lightning master branch
-  git:
+  when: dev_mode is not defined
+  ansible.builtin.git:
     repo: https://github.com/virt-lightning/virt-lightning
     dest: ~/virt-lightning
-  when: dev_mode is not defined
+
 - name: Pip install
   # --no-deps because of Ubuntu: https://github.com/pypa/pip/issues/4222
-  shell: |
+  ansible.builtin.command: |-
     pip3 install --no-deps --user ~/virt-lightning

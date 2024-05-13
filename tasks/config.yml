@@ -1,9 +1,10 @@
 ---
 - name: Prepare the configuration directory
-  file:
+  ansible.builtin.file:
     path: ~/.config/virt-lightning
     state: directory
+
 - name: Write the configuration file
-  template:
+  ansible.builtin.template:
     src: config.ini.j2
     dest: ~/.config/virt-lightning/config.ini
