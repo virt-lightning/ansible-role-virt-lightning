@@ -1,19 +1,20 @@
 ---
 - name: Write the polkit configuration
-  template:
-    src: polkit.rules.j2
-    dest: /etc/polkit-1/rules.d/80-libvirt.rules
   become: true
   when:
     - ansible_distribution == "Fedora"
+  ansible.builtin.template:
+    src: polkit.rules.j2
+    dest: /etc/polkit-1/rules.d/80-libvirt.rules
+
 - name: Create the pool directory
-  file:
+  become: true
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
     owner: "{{ virt_lightning_qemu_owner }}"
     group: "{{ virt_lightning_qemu_group }}"
     mode: "0775"
-  with_items:
+  loop:
     - /var/lib/virt-lightning/pool
     - /var/lib/virt-lightning/pool/upstream
-  become: true
