@@ -17,6 +17,5 @@ galaxy_info:
       versions:
         - buster
         - stretch
-  galaxy_tags: ['libvirt']
-
+  galaxy_tags: [libvirt]
 dependencies: []

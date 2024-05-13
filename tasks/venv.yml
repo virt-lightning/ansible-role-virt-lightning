@@ -6,7 +6,7 @@
   when: dev_mode is defined
 - name: Fetch virt-lightning master branch
   git:
-    repo: 'https://github.com/virt-lightning/virt-lightning'
+    repo: https://github.com/virt-lightning/virt-lightning
     dest: ~/virt-lightning
   when: dev_mode is not defined
 - name: Pip install
